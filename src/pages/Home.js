@@ -29,7 +29,7 @@ export const Home = () => {
   function deleteTask(id){
     console.log(id);
     remove(ref(db,"tasks/"+id));
-    location.reload();
+    window.location.reload();
   }
   return (
     
