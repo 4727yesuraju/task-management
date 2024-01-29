@@ -7,7 +7,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 export const UpdateTask = () => {
     const [data,setData] = useState({});
     const {id} = useParams();
-    console.log(id);
     const state = useSelector(state=>state.user);
     const navigate = useNavigate();
     const [user,setUser] = useState();
@@ -25,12 +24,7 @@ export const UpdateTask = () => {
         console.error(error);
       });
 
-
-      
-    },[])
-
-    //getting tasks
-    useEffect(()=>{
+       //getting tasks
       get(child(ref(db), `tasks/`+id)).then((snapshot) => {
         if (snapshot.exists()) {
           setData(snapshot.val());
@@ -40,7 +34,7 @@ export const UpdateTask = () => {
       }).catch((error) => {
         console.error(error);
       });
-    },[])
+    },[id])
 
     console.log(user);
     
