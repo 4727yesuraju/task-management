@@ -25,7 +25,12 @@ export const UpdateTask = () => {
         console.error(error);
       });
 
-       //getting tasks
+
+      
+    },[])
+
+    //getting tasks
+    useEffect(()=>{
       get(child(ref(db), `tasks/`+id)).then((snapshot) => {
         if (snapshot.exists()) {
           setData(snapshot.val());

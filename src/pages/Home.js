@@ -1,6 +1,6 @@
 import { child, get, ref, remove } from 'firebase/database';
 import React, { useEffect, useState } from 'react'
-import { useSelector,useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom';
 import { db } from '../Firebase';
 export const Home = () => {
