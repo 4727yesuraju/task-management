@@ -4,7 +4,6 @@ import { useSelector,useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom';
 import { db } from '../Firebase';
 export const Home = () => {
-  const dispatch = useDispatch();
   const state = useSelector(state=>state.user);
   console.log(state);
 
@@ -55,7 +54,7 @@ export const Home = () => {
              tasks && Object.values(tasks).map((item,index)=>{
               console.log(item);
               console.log("=>",item.user,state.user.email)
-              if(!item) return ;
+              if(!item) return null;
                 return <tr key={index} className='text-center' id={item.id}>
                   <td>{item.user}</td>
                   <td>{item.task}</td>
@@ -63,7 +62,7 @@ export const Home = () => {
                   <td>{item.status}</td>
                   <td>{item.date}</td>
                   <td>{item.colleberatewith || "single"}</td>
-                  {item.user==state.user.email ? <td className="flex gap-4 items-center justify-center text-center">
+                  {item.user===state.user.email ? <td className="flex gap-4 items-center justify-center text-center">
                     <button className="border-2 px-2 rounded-lg bg-green-400" onClick={()=>navigate('/update-task/'+item.id)}>update</button>
                     <button className="border-2 px-2 rounded-lg bg-red-400" onClick={()=>deleteTask(item.id)}>delete</button>
                   </td>: <span className="bg-red-500 px-2 rounded-lg border-2">forbidden</span>}

@@ -61,7 +61,7 @@ export const CreateTask = () => {
             <option></option>
             {
               user && Object.values(user).map((item,index)=>{
-                if(state.user.email == item.email) return;
+                if(state.user.email === item.email) return null;
                 return <option key={index}>{item.username}</option>
               })
             }

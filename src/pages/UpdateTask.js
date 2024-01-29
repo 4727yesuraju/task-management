@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import { db } from '../Firebase';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import uuid from 'react-uuid';
 
 export const UpdateTask = () => {
     const [data,setData] = useState({});
@@ -76,7 +75,7 @@ export const UpdateTask = () => {
             <option></option>
             {
               user && Object.values(user).map((item,index)=>{
-                if(state.user.email == item.email) return;
+                if(state.user.email === item.email) return null;
                 return <option key={index}>{item.username}</option>
               })
             }
